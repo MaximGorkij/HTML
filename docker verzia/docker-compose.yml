@@ -1,0 +1,17 @@
+services:
+  web:
+    image: php:8.2-apache
+    container_name: marekf-portfolio
+    restart: unless-stopped
+    volumes:
+      # Mapujeme celý koreňový adresár naraz.
+      # Apache automaticky nájde index.php, css, js, atď.
+      - /containers/portfolio/www:/var/www/html
+    networks:
+      - proxy-network
+    ports:
+      - "8080:80"
+
+networks:
+  proxy-network:
+    external: true

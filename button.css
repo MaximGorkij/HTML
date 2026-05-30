@@ -1,0 +1,33 @@
+.btn {
+	height: 64px;
+}
+
+.btn::before {
+	content: '';
+	display: block;
+	position: absolute;
+	inset: 0;
+	height: 64px;
+	width: 64px;
+	border-radius: 32px;
+	z-index: -1;
+	background: Grey;
+	transition: width: 200ms;
+}
+
+.btn:is(:hover,:focus)::before {
+	width: 100%;
+}
+
+.txt {
+	background-image: linear-gradient(transparent 0%, transparent 90%, hotpink 90%, hotpink 100%);
+	background-repeat: no-repeat;
+	background-size: 0% 100%;
+	background-position-x: right;
+	transition: background-size 300ms;
+}
+
+.txt::hover {
+	background-size: 100% 100%;
+	background-position-x: left;
+}

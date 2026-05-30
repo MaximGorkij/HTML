@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ŠŠK Bernolákova Košice - Hádzaná</title>
+    <style>
+        /* --- ZÁKLADNÉ NASTAVENIA --- */
+        :root {
+            --primary-blue: #003399; /* Košická modrá */
+            --primary-yellow: #FFD700; /* Košická žltá */
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVIGÁCIA --- */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-yellow);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 10px;
+            display: block;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-yellow);
+        }
+
+        /* Rozbaľovacie menu (Dropdown) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            color: var(--text-dark);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            top: 100%;
+            left: 0;
+            border-top: 4px solid var(--primary-yellow);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: var(--primary-blue);
+        }
+
+        /* --- HERO SEKCIA (ÚVOD) --- */
+        .hero {
+            height: 80vh; /* 80% výšky obrazovky */
+            background: linear-gradient(rgba(0, 51, 153, 0.7), rgba(0, 51, 153, 0.5)), url('https://images.unsplash.com/photo-1517926127117-7356a4220b3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-logo-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: var(--primary-yellow);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 5px solid white;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--primary-yellow);
+            color: var(--primary-blue);
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #e6c200;
+        }
+
+        /* --- SPOLOČNÉ PRE SEKCIE --- */
+        section {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-yellow);
+            margin: 10px auto;
+        }
+
+        /* --- AKTUALITY --- */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .match-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .match-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .match-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .match-teams {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 15px 0;
+            color: var(--text-dark);
+        }
+
+        .match-info {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* --- HISTÓRIA --- */
+        .history-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .history-text {
+            flex: 1;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .history-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .history-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 10px 10px 0px var(--primary-yellow);
+        }
+
+        /* --- TRÉNINGY --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        tr:nth-child(even) { background-color: #f2f2f2; }
+
+        /* --- NÁBOR --- */
+        .recruitment {
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .recruitment h2 { color: white; }
+        .recruitment p { font-size: 1.2rem; margin-bottom: 20px; }
+        
+        .info-box {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 10px 0;
+            border-left: 5px solid var(--primary-yellow);
+            text-align: left;
+            display: inline-block;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        /* --- RESPONZIVITA (MOBIL) --- */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 { font-size: 2rem; }
+            .history-content { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo-text">ŠŠK Bernolákova</div>
+            <ul class="nav-links">
+                <li><a href="#aktuality">Aktuality</a></li>
+                <li class="dropdown">
+                    <a href="#">Naše Tímy ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#">Prípravka</a>
+                        <a href="#">Mladšie žiačky</a>
+                        <a href="#">Staršie žiačky</a>
+                        <a href="#">Ženy</a>
+                    </div>
+                </li>
+                <li><a href="#historia">O klube</a></li>
+                <li><a href="#treningy">Tréningy</a></li>
+                <li><a href="#nabor" style="color: var(--primary-yellow);">Nábor</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-logo-placeholder">LOGO</div> 
+        <h1>ŠŠK Bernolákova Košice</h1>
+        <p>Tradícia, vášeň, hádzaná. Staň sa súčasťou nášho tímu.</p>
+        <a href="#nabor" class="btn">Pridaj sa k nám</a>
+    </section>
+
+    <section id="aktuality">
+        <h2>Najbližšie zápasy</h2>
+        <div class="news-grid">
+            <div class="match-card">
+                <div class="match-header">STARŠIE ŽIAČKY - 1. LIGA</div>
+                <div class="match-body">
+                    <div class="match-info">Sobota 12.10.2024 o 10:00</div>
+                    <div class="match-teams">ŠŠK Bernolákova VS Iuventa Michalovce</div>
+                    <div class="match-info">Hala Bernolákova, Košice</div>
+                </div>
+            </div>
+            <div class="match-card">
+                <div class="match-header">ŽENY - PRÍPRAVNÝ ZÁPAS</div>
+                <div class="match-body">
+                    <div class="match-info">Nedeľa 13.10.2024 o 16:00</div>
+                    <div class="match-teams">ŠŠK Bernolákova VS Prešov</div>
+                    <div class="match-info">Hala Bernolákova, Košice</div>
+                </div>
+            </div>
+            <div class="match-card">
+                <div class="match-header">NOVINKA</div>
+                <div class="match-body">
+                    <div class="match-teams">Úspešný turnaj v Maďarsku</div>
+                    <p style="font-size: 0.9rem;">Naše mladšie žiačky obsadili krásne 2. miesto na medzinárodnom turnaji...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="historia">
+        <h2>História klubu</h2>
+        <div class="history-content">
+            <div class="history-text">
+                <p>ŠŠK Bernolákova Košice je klub s bohatou históriou výchovy mladých talentov. Od nášho vzniku sme sa stali neodmysliteľnou súčasťou košickej športovej scény. Zameriavame sa na rozvoj nielen športových zručností, ale aj tímového ducha a fair-play.</p>
+                <br>
+                <p>Naše odchovankyne nás úspešne reprezentujú v najvyšších súťažiach a mnohé z nich pokračujú v profesionálnej kariére. Sme hrdí na to, že vytvárame rodinné prostredie, kde sa každé dievča cíti dôležité.</p>
+            </div>
+            <div class="history-img">
+                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="História tímu">
+            </div>
+        </div>
+    </section>
+
+    <section id="treningy">
+        <h2>Rozpis tréningov</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Aktuálny rozpis pre sezónu 2024/2025</p>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kategória</th>
+                        <th>Pondelok</th>
+                        <th>Streda</th>
+                        <th>Piatok</th>
+                        <th>Miesto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Prípravka</strong></td>
+                        <td>16:00 - 17:00</td>
+                        <td>16:00 - 17:00</td>
+                        <td>-</td>
+                        <td>ZŠ Bernolákova (Malá telocvičňa)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mladšie žiačky</strong></td>
+                        <td>17:00 - 18:30</td>
+                        <td>17:00 - 18:30</td>
+                        <td>16:30 - 18:00</td>
+                        <td>Športová hala</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Staršie žiačky</strong></td>
+                        <td>18:30 - 20:00</td>
+                        <td>18:30 - 20:00</td>
+                        <td>18:00 - 19:30</td>
+                        <td>Športová hala</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ženy</strong></td>
+                        <td>19:00 - 20:30</td>
+                        <td>19:00 - 20:30</td>
+                        <td>19:00 - 20:30</td>
+                        <td>Športová hala</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="nabor">
+        <div class="recruitment">
+            <h2>Nábor dievčat</h2>
+            <p>Hľadáme nové talenty! Príď si vyskúšať hádzanú.</p>
+            
+            <div class="info-box">
+                <h3>ℹ️ Základné informácie</h3>
+                <p><strong>Koho hľadáme:</strong> Dievčatá vo veku od 6 do 12 rokov.</p>
+                <p><strong>Kedy:</strong> Každý pondelok a stredu o 16:00.</p>
+                <p><strong>Čo si priniesť:</strong> Tričko, kraťasy, halovú obuv a fľašu s vodou.</p>
+                <p><strong>Kontakt:</strong> trénerka Nováková (+421 900 000 000)</p>
+            </div>
+            
+            <br><br>
+            <button class="btn" style="background: white; color: var(--primary-blue);">Kontaktujte nás</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ŠŠK Bernolákova Košice. Všetky práva vyhradené.</p>
+        <p>Design by AI Assistant</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ŠŠK Bernolákova Košice - Hádzaná</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23003399'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23FFD700'/%3E%3C/svg%3E">
+    
+    <!-- Meta tags for SEO and social sharing -->
+    <meta name="description" content="ŠŠK Bernolákova Košice - Hádzanársky klub pre dievčatá. Tradícia, vášeň, hádzaná. Nábor nových talentov.">
+    <meta name="keywords" content="hádzaná, Košice, ŠŠK Bernolákova, dievčatá, šport, nábor">
+    <meta name="author" content="ŠŠK Bernolákova Košice">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.sskbernolakova.sk/">
+    <meta property="og:title" content="ŠŠK Bernolákova Košice - Hádzaná">
+    <meta property="og:description" content="Tradícia, vášeň, hádzaná. Staň sa súčasťou nášho tímu.">
+    <meta property="og:image" content="https://www.sskbernolakova.sk/og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.sskbernolakova.sk/">
+    <meta name="twitter:title" content="ŠŠK Bernolákova Košice - Hádzaná">
+    <meta name="twitter:description" content="Tradícia, vášeň, hádzaná. Staň sa súčasťou nášho tímu.">
+    <meta name="twitter:image" content="https://www.sskbernolakova.sk/og-image.jpg">
+    <style>
+        /* --- ZÁKLADNÉ NASTAVENIA --- */
+        :root {
+            --primary-blue: #003399; /* Košická modrá */
+            --primary-yellow: #FFD700; /* Košická žltá */
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        
+        /* Lazy loading images */
+        img {
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+        
+        img.loaded {
+            opacity: 1;
+        }
+        
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- NAVIGÁCIA --- */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-yellow);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 10px;
+            display: block;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-yellow);
+        }
+        
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        .nav-links a.active {
+            color: var(--primary-yellow);
+            border-bottom: 2px solid var(--primary-yellow);
+        }
+
+        /* Rozbaľovacie menu (Dropdown) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            color: var(--text-dark);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            top: 100%;
+            left: 0;
+            border-top: 4px solid var(--primary-yellow);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: var(--primary-blue);
+        }
+
+        /* --- HERO SEKCIA (ÚVOD) --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 51, 153, 0.7), rgba(0, 51, 153, 0.5)), url('https://images.unsplash.com/photo-1517926127117-7356a4220b3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-logo-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: var(--primary-yellow);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 5px solid white;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--primary-yellow);
+            color: var(--primary-blue);
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #e6c200;
+        }
+
+        /* --- SPOLOČNÉ PRE SEKCIE --- */
+        section {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-yellow);
+            margin: 10px auto;
+        }
+
+        /* --- AKTUALITY --- */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .match-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .match-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .match-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .match-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .match-teams {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 15px 0;
+            color: var(--text-dark);
+        }
+
+        .match-info {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* --- HISTÓRIA --- */
+        .history-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .history-text {
+            flex: 1;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .history-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .history-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 10px 10px 0px var(--primary-yellow);
+        }
+
+        /* --- TRÉNINGY --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        
+        /* --- BACK TO TOP --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-blue);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 999;
+            font-size: 1.5rem;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-yellow);
+            color: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+        
+        /* --- KONTAKTNÝ FORMULÁR --- */
+        .contact-form {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-status {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+        }
+        
+        .form-status.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .form-status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Loading skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 8px;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .skeleton-card {
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        
+        /* --- GALÉRIA --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 20px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+        
+        /* File upload zone */
+        .upload-zone {
+            border: 2px dashed var(--primary-blue);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 20px 0;
+        }
+        
+        .upload-zone:hover {
+            background-color: #f0f4ff;
+        }
+        
+        .upload-zone.dragover {
+            background-color: #e6f0ff;
+            border-color: var(--primary-yellow);
+        }
+        
+        /* --- PARTNERI --- */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            align-items: center;
+            margin-top: 40px;
+        }
+        
+        .partner-logo {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .partner-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+        
+        .partner-logo:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* --- NÁBOR --- */
+        .recruitment {
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .recruitment h2 { color: white; }
+        .recruitment p { font-size: 1.2rem; margin-bottom: 20px; }
+        
+        .info-box {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 10px 0;
+            border-left: 5px solid var(--primary-yellow);
+            text-align: left;
+            display: inline-block;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        /* --- RESPONZIVITA (MOBIL) --- */
+        @media (max-width: 768px) {
+            .navbar {
+                position: relative;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-blue);
+                flex-direction: column;
+                padding: 20px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .nav-links.active {
+                max-height: 500px;
+            }
+            
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background-color: rgba(255,255,255,0.1);
+            }
+            
+            .hero h1 { font-size: 2rem; }
+            .history-content { flex-direction: column; }
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+<script src="main.js"></script>
+    <header>
+        <div class="navbar">
+            <div class="logo-text">ŠŠK Bernolákova</div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#aktuality" class="nav-link">Aktuality</a></li>
+                <li class="dropdown">
+                    <a href="#">Naše Tímy ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#">Prípravka</a>
+                        <a href="#">Mladšie žiačky</a>
+                        <a href="#">Staršie žiačky</a>
+                        <a href="#">Ženy</a>
+                    </div>
+                </li>
+                <li><a href="#historia" class="nav-link">O klube</a></li>
+                <li><a href="#treningy" class="nav-link">Tréningy</a></li>
+                <li><a href="#galeria" class="nav-link">Galéria</a></li>
+                <li><a href="#partneri" class="nav-link">Partneri</a></li>
+                <li><a href="#nabor" class="nav-link" style="color: var(--primary-yellow);">Nábor</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-logo-placeholder">LOGO</div> 
+        <h1>ŠŠK Bernolákova Košice</h1>
+        <p>Tradícia, vášeň, hádzaná. Staň sa súčasťou nášho tímu.</p>
+        <a href="#nabor" class="btn">Pridaj sa k nám</a>
+    </section>
+
+    <section id="aktuality">
+        <h2 class="fade-in">Najbližšie zápasy</h2>
+        <div class="news-grid" id="matchesContainer">
+            <!-- Loading skeletons -->
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+        </div>
+    </section>
+
+    <section id="historia">
+        <h2 class="fade-in">História klubu</h2>
+        <div class="history-content fade-in">
+            <div class="history-text">
+                <p>ŠŠK Bernolákova Košice je klub s bohatou históriou výchovy mladých talentov. Od nášho vzniku sme sa stali neodmysliteľnou súčasťou košickej športovej scény. Zameriavame sa na rozvoj nielen športových zručností, ale aj tímového ducha a fair-play.</p>
+                <br>
+                <p>Naše odchovanky nás úspešne reprezentujú v najvyšších súťažiach a mnohé z nich pokračujú v profesionálnej kariére. Sme hrdí na to, že vytvárame rodinné prostredie, kde sa každé dievča cíti dôležité.</p>
+            </div>
+            <div class="history-img">
+                <img data-src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="História tímu" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section id="treningy">
+        <h2 class="fade-in">Rozpis tréningov</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Aktuálny rozpis pre sezónu 2024/2025</p>
+        <div style="overflow-x:auto;" class="fade-in">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kategória</th>
+                        <th>Pondelok</th>
+                        <th>Streda</th>
+                        <th>Piatok</th>
+                        <th>Miesto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Prípravka</strong></td>
+                        <td>16:00 - 17:00</td>
+                        <td>16:00 - 17:00</td>
+                        <td>-</td>
+                        <td>ZŠ Bernolákova (Malá telocvičňa)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mladšie žiačky</strong></td>
+                        <td>17:00 - 18:30</td>
+                        <td>17:00 - 18:30</td>
+                        <td>16:30 - 18:00</td>
+                        <td>Športová hala</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Staršie žiačky</strong></td>
+                        <td>18:30 - 20:00</td>
+                        <td>18:30 - 20:00</td>
+                        <td>18:00 - 19:30</td>
+                        <td>Športová hala</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ženy</strong></td>
+                        <td>19:00 - 20:30</td>
+                        <td>19:00 - 20:30</td>
+                        <td>19:00 - 20:30</td>
+                        <td>Športová hala</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <section id="galeria">
+        <h2 class="fade-in">Galéria</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Momentky z našich tréningov a zápasov</p>
+        
+        <div class="upload-zone fade-in" id="uploadZone">
+            <p style="font-size: 1.2rem; color: var(--primary-blue); margin-bottom: 10px;">📁 Nahrajte fotky</p>
+            <p style="color: #666;">Pretiahnite sem súbory alebo kliknite pre výber</p>
+            <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+        </div>
+        
+        <div class="gallery-grid fade-in" id="galleryGrid">
+            <!-- Fotky sa načítajú z lokálneho úložiska -->
+        </div>
+    </section>
+    
+    <section id="partneri">
+        <h2 class="fade-in">Naši partneri</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Ďakujeme za podporu</p>
+        <div class="partners-grid fade-in" id="partnersGrid">
+            <div class="partner-logo">
+                <div style="color: var(--primary-blue); font-weight: bold; font-size: 1.2rem;">Partner 1</div>
+            </div>
+            <div class="partner-logo">
+                <div style="color: var(--primary-blue); font-weight: bold; font-size: 1.2rem;">Partner 2</div>
+            </div>
+            <div class="partner-logo">
+                <div style="color: var(--primary-blue); font-weight: bold; font-size: 1.2rem;">Partner 3</div>
+            </div>
+            <div class="partner-logo">
+                <div style="color: var(--primary-blue); font-weight: bold; font-size: 1.2rem;">Partner 4</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nabor">
+        <div class="recruitment fade-in">
+            <h2>Nábor dievčat</h2>
+            <p>Hľadáme nové talenty! Príď si vyskúšať hádzanú.</p>
+            
+            <div class="info-box">
+                <h3>ℹ️ Základné informácie</h3>
+                <p><strong>Koho hľadáme:</strong> Dievčatá vo veku od 6 do 12 rokov.</p>
+                <p><strong>Kedy:</strong> Každý pondelok a stredu o 16:00.</p>
+                <p><strong>Čo si priniesť:</strong> Tričko, kraťasy, halovú obuv a fľašu s vodou.</p>
+                <p><strong>Kontakt:</strong> trénerka Nováková (+421 900 000 000)</p>
+            </div>
+            
+            <br><br>
+            
+            <div class="contact-form">
+                <h3 style="text-align: center; color: var(--primary-blue); margin-bottom: 20px;">Kontaktný formulár</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Meno a priezvisko *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefón</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Vek dieťaťa</label>
+                        <input type="number" id="age" name="age" min="5" max="18">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Správa *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; background: var(--primary-blue); color: white;">Odoslať správu</button>
+                </form>
+                <div class="form-status" id="formStatus"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Back to top button -->
+    <div class="back-to-top" id="backToTop">
+        ↑
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ŠŠK Bernolákova Košice. Všetky práva vyhradené.</p>
+        <p>Design by me</p>
+    </footer>
+    
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>HierarchyData</key>
+	<array>
+		<string>152C6C5D-71A7-4C9E-A1F3-2DC33A3EF360</string>
+	</array>
+	<key>ProjectItems</key>
+	<dict>
+		<key>152C6C5D-71A7-4C9E-A1F3-2DC33A3EF360</key>
+		<dict>
+			<key>ItemData</key>
+			<dict>
+				<key>BookmarkData</key>
+				<data>
+				Ym9va5wDAAAAAAQQMAAAAJtXB/z8w6PK05Twg6H0L5tg
+				k5KeVvA3BaR23mLOTSfQsAIAAAQAAAADAwAAAAgAKAcA
+				AAABAQAAVm9sdW1lcwADAAAAAQEAAFdlYgAGAAAAAQEA
+				AG1hcmVrZgAADAAAAAEGAAAQAAAAIAAAACwAAAAIAAAA
+				BAMAAAFjAAAAAAAAAAAAAAEKAAAMAAAAAQYAAFAAAABg
+				AAAAYAAAAAgAAAAABAAAQcTvjRcAAAAYAAAAAQIAAAIA
+				AAAAAAAADwAAAAAAAAAAAAAAAAAAABQAAAABCQAAZmls
+				ZTovLy9Wb2x1bWVzL1dlYi8IAAAABAMAAADwbXzdBgAA
+				CAAAAAAEAABBxO7oFAAAABgAAAABAgAAAAAAAAAAAADv
+				EwAAAQAAAAAAAAAAAAAADAAAAAEBAAAvVm9sdW1lcy9X
+				ZWIjAAAAAQkAAHNtYjovL29ja29AbmFzNGZpbmRvLmxv
+				Y2FsLjo0NDUvV2ViAAgAAAABCQAAZmlsZTovLy8MAAAA
+				AQEAAE1hY2ludG9zaCBIRAgAAAAEAwAAAFChG3MAAAAI
+				AAAAAAQAAEHE7Eu9AAAAJAAAAAEBAABEQTM5MTkxRS1B
+				RjcxLTRGQzUtQjE0Qy1DMTNCNzUwQkUzNzEYAAAAAQIA
+				AIEAAAABAAAA7xMAAAEAAAAAAAAAAAAAAAEAAAABAQAA
+				LwAAAGAAAAD+////APAAAAAAAAAHAAAAAiAAANgBAAAA
+				AAAABSAAAEgBAAAAAAAAECAAAFgBAAAAAAAAESAAAIwB
+				AAAAAAAAEiAAAGwBAAAAAAAAEyAAAHwBAAAAAAAAICAA
+				ALgBAAAAAAAABAAAAAMDAAAA8AAABAAAAAMDAAAAAAAA
+				BAAAAAMDAAABAAAAEAAAAAEGAABMAgAAWAIAAGQCAABY
+				AgAAHgAAAAEBAABOU1VSTFZvbHVtZVVSTEZvclJlbW91
+				bnRpbmdLZXkAALQAAAD+////AQAAAOQBAAAOAAAABBAA
+				ADwAAAAAAAAABRAAAGgAAAAAAAAAEBAAAIwAAAAAAAAA
+				QBAAAHwAAAAAAAAAACAAAHACAAAAAAAAAiAAAAgBAAAA
+				AAAABSAAAKwAAAAAAAAAECAAACAAAAAAAAAAEiAAAMgA
+				AAAAAAAAEyAAANgAAAAAAAAAICAAAOgAAAAAAAAAUCAA
+				ABwBAAAAAAAAENAAAAQAAAAAAAAAiAIAgBwBAAAAAAAA
+				</data>
+				<key>FileURL</key>
+				<string>file:///Volumes/Web/marekf/</string>
+				<key>HasSecurityScope</key>
+				<true/>
+				<key>TypeID</key>
+				<string>_CFileLocator</string>
+				<key>Version</key>
+				<integer>1</integer>
+			</dict>
+			<key>ItemName</key>
+			<string>marekf</string>
+			<key>ItemType</key>
+			<string>FolderReference</string>
+		</dict>
+	</dict>
+	<key>com.barebones.DocumentFormatVersion</key>
+	<integer>5</integer>
+	<key>com.barebones.DocumentType</key>
+	<string>Project</string>
+</dict>
+</plist>

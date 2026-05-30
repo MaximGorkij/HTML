@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Žiadny obsah | WebHouse</title>
+	<meta name="description" content="Na tejto doméne zatiaľ nie je žiadna stránka. WebHouse poskytuje spoľahlivý webhosting pre vaše domény.">
+	<meta name="robots" content="noindex, nofollow">
+	<link rel="canonical" href="https://www.webhouse.sk/sk/uvod/">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	
+	<!-- Open Graph Metadata -->
+    <meta property="og:title" content="Žiadny obsah | WebHouse">
+    <meta property="og:description" content="Na tejto doméne zatiaľ nie je žiadna stránka. WebHouse poskytuje spoľahlivý webhosting pre vaše domény.">
+    <meta property="og:url" content="https://www.webhouse.sk/sk/uvod/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.webhouse.family/webhouse.sk/img/logo.svg">
+
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Žiadny obsah | WebHouse">
+    <meta name="twitter:description" content="Na tejto doméne zatiaľ nie je žiadna stránka. WebHouse poskytuje spoľahlivý webhosting pre vaše domény.">
+    <meta name="twitter:image" content="https://www.webhouse.family/webhouse.sk/img/logo.svg">
+	
+    <style>
+        body {
+            font-family: "Open Sans", sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #d7eff3;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background: #ffffff;
+            padding: 25px;
+			width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px 20px;
+        }
+        .container h1 {
+            font-size: 35px;
+            margin-bottom: 30px;
+			font-weight:normal;
+            color: #5bc3d5;
+        }
+        .container p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .container a.btn {
+            display: inline-block;
+            margin-top: 10px;
+			margin-right: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #8f8713;
+            background: #fdf369;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .container a.btn:hover {
+            color: #ffffff;
+            background: #38353c;
+        }
+        .container a.btn2 {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+            background: #5bc3d5;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .container a.btn2:hover {
+            color: #ffffff;
+            background: #38353c;
+        }
+        .container a.lnk {
+            color: #5bc3d5;
+            text-decoration: none;
+        }
+        .container a.lnk:hover {
+            color: #38353c;
+            text-decoration: underline;
+        }
+        .support-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #5bc3d5;
+        }
+        .support-link a {
+            color: #5bc3d5;
+            text-decoration: none;
+        }
+        .support-link a:hover {
+            color: #38353c;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="https://www.webhouse.sk/sk/uvod/" target="_blank">
+            <img src="https://www.webhouse.family/webhouse.sk/img/logo.svg" alt="WebHouse Logo">
+        </a>
+    </div>
+    <div class="container">
+        <h1>Zatiaľ tu nič nie je</h1>
+        <p>Doména <strong id="domain"></strong> je prevádzkovaná vo <a href="https://www.webhouse.sk/sk/uvod/" class="lnk" target="_blank">WebHouse</a>, ale&nbsp;momentálne sa na nej nezobrazuje žiadny obsah.</p>
+        <p>Ak ste majiteľom tohto hostingu, nahrajte si svoju stránku do koreňového priečinka webu.</p>
+        <a href="https://www.webhouse.sk/sk/uvod/" class="btn" target="_blank">Navštíviť WebHouse</a> <a href="https://setup.sk" class="btn2" target="_blank">Spravovať tento hosting</a>
+    </div>
+    <p class="support-link">
+    <a href="tel:+421270709090">Zavolajte nám</a> | <a href="https://helpdesk.webhouse.sk/" target="_blank">Centrum podpory WebHouse</a> | <a href="https://www.webhouse.sk/sk/kontakt/" target="_blank">Kontakt</a>
+    </p>
+	 <script>
+         document.addEventListener("DOMContentLoaded", () => {
+             const fullUrl = window.location.href;
+             const cleanUrl = fullUrl.replace(/^https?:\/\//, "").split("/")[0]; 
+             document.getElementById("domain").textContent = cleanUrl;
+         });
+     </script>
+</body>
+</html>
